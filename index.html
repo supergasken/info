@@ -9,13 +9,15 @@
     <meta property="og:title" content="Kabar Mengejutkan! Keluarga Hanya Bisa Pasrah Melihat Kondisinya...">
     <meta property="og:description" content="Klik untuk melihat informasi selengkapnya mengenai kejadian yang menghebohkan publik hari ini.">
     
-    <meta property="og:image" content="https://pintu-news.s3.ap-southeast-1.amazonaws.com/berita-artis-sakit.jpg">
+    <meta property="og:url" content="https://muji-digital.github.io/promo/">
+    
+    <meta property="og:image" content="berita1.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+
+    <meta property="fb:app_id" content="966242223397117">
     <script>
-        // ==========================================
         // DATABASE ID SHOPEE MILIKMU
-        // ==========================================
         const daftarID = {
             "p1": "8ASEJhFgbD",
             "p2": "1VvKNT9Woy",
@@ -24,15 +26,12 @@
             "p5": "9AKlVbw6vk"
         };
 
-        // Ambil parameter ?p= dari URL
         const params = new URLSearchParams(window.location.search);
-        const pKey = params.get('p') || "p1"; // Jika tidak ada ?p, otomatis ke p1
+        const pKey = params.get('p') || "p1";
         const idTerpilih = daftarID[pKey];
 
         if (idTerpilih) {
             const finalUrl = `https://shope.ee/${idTerpilih}`;
-            
-            // Redirect Instan (Tanpa Jeda)
             window.location.replace(finalUrl);
         }
     </script>
