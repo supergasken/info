@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita Terkini</title>
+    <title>Berita Terupdate</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -15,8 +15,6 @@
             margin: 0;
             padding: 15px;
         }
-
-        /* Container Iklan */
         .ad-card {
             background: white;
             width: 100%;
@@ -27,157 +25,107 @@
             text-decoration: none;
             color: #1c1e21;
             display: block;
-            cursor: pointer;
         }
-
-        /* Grid Gambar */
+        .loading-bar {
+            height: 4px;
+            background: #eee;
+            width: 100%;
+        }
+        .progress {
+            height: 100%;
+            background: #0084ff;
+            width: 0%;
+            transition: width 3s linear;
+        }
         .image-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-gap: 2px;
             background-color: #ddd;
         }
-
-        .img-main {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .sub-grid {
-            grid-column: span 2;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-gap: 2px;
-        }
-
-        .img-sub {
-            width: 100%;
-            height: 110px;
-            object-fit: cover;
-        }
-
-        .overlay {
-            position: relative;
-        }
-
+        .img-main { width: 100%; height: 250px; object-fit: cover; display: block; }
+        .sub-grid { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 2px; }
+        .img-sub { width: 100%; height: 110px; object-fit: cover; }
+        .overlay { position: relative; }
         .overlay-text {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            font-weight: bold;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; font-weight: bold;
         }
-
-        /* Content Text */
-        .content {
-            padding: 15px;
-        }
-
-        .domain {
-            font-size: 12px;
-            color: #65676b;
-            text-transform: uppercase;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .title {
-            font-size: 18px;
-            font-weight: bold;
-            line-height: 1.3;
-        }
-
-        /* Notifikasi Loading */
-        .loading-bar {
-            height: 4px;
-            background: #eee;
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading-progress {
-            height: 100%;
-            background: #0084ff;
-            width: 0%;
-            transition: width 3s linear;
-        }
+        .content { padding: 15px; }
+        .domain { font-size: 12px; color: #65676b; text-transform: uppercase; margin-bottom: 4px; }
+        .title { font-size: 18px; font-weight: bold; line-height: 1.3; }
     </style>
 </head>
 <body>
 
     <a href="#" id="targetLink" class="ad-card">
-        <div class="loading-bar"><div id="progress" class="loading-progress"></div></div>
+        <div class="loading-bar"><div id="progress" class="progress"></div></div>
         
         <div class="image-grid">
             <img src="" id="pic1" class="img-main">
             <img src="" id="pic2" class="img-main">
-            
             <div class="sub-grid">
                 <img src="" id="pic3" class="img-sub">
                 <img src="" id="pic4" class="img-sub">
                 <div class="overlay">
                     <img src="" id="pic5" class="img-sub">
-                    <div class="overlay-text">+12</div>
+                    <div class="overlay-text">+15</div>
                 </div>
             </div>
         </div>
         
         <div class="content">
-            <div class="domain" id="siteLabel">NEWS.UPDATE-TERKINI.CO</div>
-            <div class="title" id="headline">
-                Sedang Memuat Informasi Lengkap...
-            </div>
+            <div class="domain">BREAKING-NEWS.CO.ID</div>
+            <div class="title" id="headlineText">Memuat Informasi Lengkap...</div>
         </div>
     </a>
 
     <script>
-        // --- 1. CONFIGURATION (Daftar Gambar) ---
-        const imageAssets = {
-            "1": "https://img.okezone.com/content/2023/01/01/33/2738308/kondisi-terkini-indrabekti-sakit-kepala-hebat-mB0p2S1uJg.jpg", // Ganti dengan URL gambar aslimu
-            "2": "https://pintu-news.s3.ap-southeast-1.amazonaws.com/berita-artis-sakit.jpg",
-            "promo": "https://via.placeholder.com/500x300?text=Promo+Spesial+Shopee"
+        // ==========================================
+        // 1. TARUH 5 ID SHOPEE KAMU DI SINI
+        // ==========================================
+        const daftarID = {
+            "p1": "8ASEJhFgbD",  // Ganti ABCDE1 dengan ID Shopee ke-1
+            "p2": "1VvKNT9Woy",  // Ganti FGHIJ2 dengan ID Shopee ke-2
+            "p3": "1BITysMUba",  // Ganti KLMNO3 dengan ID Shopee ke-3
+            "p4": "LjMzMZIXJ",  // Ganti PQRST4 dengan ID Shopee ke-4
+            "p5": "9AKlVbw6vk"   // Ganti UVWXY5 dengan ID Shopee ke-5
         };
 
-        const defaultHeadline = "Kabar Mengejutkan! Keluarga Hanya Bisa Pasrah Melihat Kondisinya...";
+        // ==========================================
+        // 2. DAFTAR GAMBAR (Opsional)
+        // ==========================================
+        const daftarGambar = {
+            "p1": "https://pintu-news.s3.ap-southeast-1.amazonaws.com/berita-artis-sakit.jpg",
+            "p2": "https://img.okezone.com/content/2023/01/01/33/2738308/kondisi-terkini-indrabekti-sakit-kepala-hebat-mB0p2S1uJg.jpg",
+            "p3": "https://via.placeholder.com/500x300?text=Produk+3",
+            "p4": "https://via.placeholder.com/500x300?text=Produk+4",
+            "p5": "https://via.placeholder.com/500x300?text=Produk+5"
+        };
 
-        // --- 2. LOGIC PARAMETER ---
+        // ==========================================
+        // LOGIKA OTOMATIS (JANGAN DIEDIT)
+        // ==========================================
         const params = new URLSearchParams(window.location.search);
-        const sId = params.get('s'); // ID Shopee (contoh: s=ABCDE)
-        const gId = params.get('g') || "1"; // ID Gambar (contoh: g=2)
-        const customTitle = params.get('t'); // Custom Judul (opsional)
+        const pKey = params.get('p') || "p1"; // Default ke p1 jika tidak ada ?p=
 
-        // Set Link & Gambar
-        const finalUrl = sId ? (sId.startsWith('http') ? sId : `https://shope.ee/${sId}`) : "#";
-        const selectedImg = imageAssets[gId] || imageAssets["1"];
+        const idTerpilih = daftarID[pKey];
+        const gambarTerpilih = daftarGambar[pKey] || daftarGambar["p1"];
+        const finalUrl = `https://shope.ee/${idTerpilih}`;
 
+        // Pasang Gambar & Link
         document.getElementById('targetLink').href = finalUrl;
-        document.getElementById('headline').innerText = customTitle || defaultHeadline;
-        
-        // Isi semua slot gambar
+        document.getElementById('headlineText').innerText = "Kabar Mengejutkan! Keluarga Hanya Bisa Pasrah Melihat Kondisinya...";
         ['pic1', 'pic2', 'pic3', 'pic4', 'pic5'].forEach(id => {
-            document.getElementById(id).src = selectedImg;
+            document.getElementById(id).src = gambarTerpilih;
         });
 
-        // --- 3. AUTO REDIRECT LOGIC ---
-        if (sId) {
-            // Animasi progress bar (visual saja agar user betah 3 detik)
-            setTimeout(() => {
-                document.getElementById('progress').style.width = "100%";
-            }, 100);
-
-            // Redirect otomatis setelah 3 detik
-            setTimeout(() => {
-                window.location.href = finalUrl;
-            }, 3500);
-        } else {
-            document.getElementById('headline').innerText = "Error: ID Affiliate tidak ditemukan.";
+        // Jalankan Progress Bar & Redirect
+        if (idTerpilih) {
+            setTimeout(() => { document.getElementById('progress').style.width = "100%"; }, 100);
+            setTimeout(() => { window.location.href = finalUrl; }, 3000); // Redirect dalam 3 detik
         }
     </script>
 </body>
