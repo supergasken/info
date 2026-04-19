@@ -2,43 +2,31 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>BREAKING NEWS: Kejadian Tak Terduga Hari Ini!</title>
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Kabar Mengejutkan! Keluarga Hanya Bisa Pasrah Melihat Kondisinya...">
-    <meta property="og:description" content="Klik untuk melihat informasi selengkapnya mengenai kejadian yang menghebohkan publik hari ini.">
-    
-    <meta property="og:url" content="https://muji-digital.github.io/promo/">
-    
-    <meta property="og:image" content="berita1.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-
-    <meta property="fb:app_id" content="966242223397117">
-    <script>
-        // DATABASE ID SHOPEE MILIKMU
-        const daftarID = {
-            "p1": "8ASEJhFgbD",
-            "p2": "1VvKNT9Woy",
-            "p3": "1BITysMUba",
-            "p4": "LjMzMZIXJ",
-            "p5": "9AKlVbw6vk"
-        };
-
+    <script src="ids.js"></script> <script>
         const params = new URLSearchParams(window.location.search);
         const pKey = params.get('p') || "p1";
         const idTerpilih = daftarID[pKey];
 
+        // LOGIKA PENYAMARAN DINAMIS (Penting untuk FB)
+        // Link gambar akan otomatis: kolase_p1.jpg, kolase_p2.jpg, dst sesuai ?p=
+        const namaGambar = `kolase_${pKey}.jpg`; 
+        const linkGambar = `https://supergasken.github.io/info/${namaGambar}`;
+
+        // Mengatur Meta OG secara dinamis agar FB bisa "melihat" gambar yang benar
+        document.title = "BREAKING NEWS: Kejadian Heboh Hari Ini!";
+        
+        // Fungsi Redirect
         if (idTerpilih) {
-            const finalUrl = `https://shope.ee/${idTerpilih}`;
-            window.location.replace(finalUrl);
+            window.location.replace(`https://shope.ee/${idTerpilih}`);
         }
     </script>
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Kabar Mengejutkan! Keluarga Hanya Bisa Pasrah Melihat Kondisinya...">
+    <meta property="og:description" content="Klik untuk melihat informasi selengkapnya mengenai kejadian hari ini.">
+    <meta property="fb:app_id" content="966242223397117">
 </head>
-<body style="background:#f0f2f5; margin:0; display:flex; justify-content:center; align-items:center; height:100vh;">
-    <div style="text-align:center; font-family:sans-serif; color:#65676b;">
-        <p>Memuat informasi...</p>
-    </div>
+<body>
+    <p>Memuat informasi...</p>
 </body>
 </html>
